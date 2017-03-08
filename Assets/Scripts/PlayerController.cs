@@ -7,12 +7,11 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject oxygenBar;
     public GameObject palmingBar;
-    public float oxygenDecayRate = 0.02f;
-    public float horizontalSpeed = 5.0f;
-    public float verticalSpeed = 5.0f;
-
-    public float horizontalOscillationCoeff = 0.8f;
-    public float verticalOscillationCoeff = 0f;
+    public float oxygenDecayRate;
+    public float horizontalSpeed;
+    public float verticalSpeed;
+    public float verticalOscillationCoeff;
+    
     // Update is called once per frame
     void Update()
     {
