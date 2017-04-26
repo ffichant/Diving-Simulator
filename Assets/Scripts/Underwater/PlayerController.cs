@@ -15,11 +15,19 @@ public class PlayerController : MonoBehaviour {
     public float verticalSpeed;
     public float verticalOscillationCoeff;
 
+ 
     public GameObject canvas;
-    
+    public ScoreManager Score;
+    private bool hasDamagedTerrain = false;
+    private bool firstTimeTouchingJellyfish = true;
+
+    public GameObject endButton;
+
     void Start()
     {
         canvas = GameObject.Find("Canvas");
+        // Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
+        endButton.SetActiveRecursively(false);
     }
     // Update is called once per frame
     void Update()
@@ -53,6 +61,15 @@ public class PlayerController : MonoBehaviour {
 
         oxygenBar.GetComponent<Scrollbar>().size -= Time.deltaTime * oxygenDecayRate;
         clampPos();
+
+
+        //Conditions de fin prématurée
+        if (oxygenBar.GetComponent<Scrollbar>().size == 0f)
+        {
+            Debug.Log("plus d'oxy");
+            Score.RegisterLossOfPoints(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
+            endButton.SetActiveRecursively(true);
+        }
     }
 
     void driftingEffect()
@@ -73,5 +90,27 @@ public class PlayerController : MonoBehaviour {
           Mathf.Clamp(transform.position.x, minX, maxX),
           Mathf.Clamp(transform.position.y, minY, maxY),
           transform.position.z);
+    }
+
+    private void OnTriggerEnter2D (Collider2D other)
+    {
+        if(other.tag == "Harmful")
+        {
+            Debug.Log("JELLYFISH");
+            oxygenBar.GetComponent<Scrollbar>().size -= 15 * oxygenDecayRate;
+            if(firstTimeTouchingJellyfish)
+            {
+                Debug.Log("JELLYFISH_FIRST");
+                Score.RegisterLossOfPoints(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
+                firstTimeTouchingJellyfish = false;
+            }
+        }
+        if(other.tag == "terrain" && hasDamagedTerrain)
+        {
+            Debug.Log("Terrain!");
+            Score.RegisterLossOfPoints(10, "Il ne faut pas trop s'approcher des fonds marins pour ne pas les abîmer !");
+            hasDamagedTerrain = true;
+        }
+
     }
 }

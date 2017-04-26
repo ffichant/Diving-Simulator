@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Score
   - Terrain
+  - Harmful
   layers:
   - Default
   - TransparentFX

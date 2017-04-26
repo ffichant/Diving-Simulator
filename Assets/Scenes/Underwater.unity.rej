@@ -1,0 +1,13 @@
+diff a/Assets/Scenes/Underwater.unity b/Assets/Scenes/Underwater.unity	(rejected hunks)
+@@ -2954,6 +2954,11 @@
+       propertyPath: stopTime.Array.data[0]
+       value: 10
+       objectReference: {fileID: 0}
++    - target: {fileID: 54651526441630730, guid: ab4fccc5f920fdb478953bf1c0f6ed75,
++        type: 2}
++      propertyPath: m_IsKinematic
++      value: 1
++      objectReference: {fileID: 0}
+     m_RemovedComponents: []
+   m_ParentPrefab: {fileID: 100100000, guid: ab4fccc5f920fdb478953bf1c0f6ed75, type: 2}
+   m_IsPrefabParent: 0
