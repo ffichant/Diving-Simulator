@@ -145,7 +145,7 @@ public class EquipmentManager : MonoBehaviour {
 
     private void RemovePointsBecause(string reason){
         if (LostPoints<20) {
-            RegisterLossOfPoints(2, reason);
+            Score.RegisterLossOfPoints(2, reason);
             LostPoints += 2;
         }
     }
