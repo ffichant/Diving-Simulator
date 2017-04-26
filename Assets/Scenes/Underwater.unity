@@ -3807,6 +3807,11 @@ Prefab:
       propertyPath: signManager
       value: 
       objectReference: {fileID: 1778279775}
+    - target: {fileID: 212095649236037786, guid: ab4fccc5f920fdb478953bf1c0f6ed75,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1036905827
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4fccc5f920fdb478953bf1c0f6ed75, type: 2}
   m_IsPrefabParent: 0
@@ -4710,6 +4715,11 @@ Prefab:
       propertyPath: endButton
       value: 
       objectReference: {fileID: 1935479469}
+    - target: {fileID: 212847249419769056, guid: 4d68e692e633cda45bcfd05ed1362009,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1036905827
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d68e692e633cda45bcfd05ed1362009, type: 2}
   m_IsPrefabParent: 0

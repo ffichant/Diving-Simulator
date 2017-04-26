@@ -34,7 +34,8 @@ public class ScoreManager : MonoBehaviour {
 	public Dictionary<int,PointLoss> PointSummaryDive;
 
 	void Start () {
-		
+        DontDestroyOnLoad(this);
+        ResetScoreManager();
 	}
 
 	// Réinitialise le Score Manager.
@@ -86,4 +87,3 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 }
->>>>>>> 999bbf216c8ef03952a395be0a4aa4fa92a284b8

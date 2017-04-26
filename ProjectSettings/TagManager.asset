@@ -5,13 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Score
-<<<<<<< HEAD
   - Terrain
   - Harmful
-=======
   - SceneManager
-  - ScoreManager
->>>>>>> 999bbf216c8ef03952a395be0a4aa4fa92a284b8
   layers:
   - Default
   - TransparentFX
@@ -49,12 +45,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 285010879
-    locked: 0
-  - name: Items
-    uniqueID: 2406494177
-    locked: 0
-  - name: Units
-    uniqueID: 854543061
+  - name: BlockingLayer
+    uniqueID: 1036905827
     locked: 0

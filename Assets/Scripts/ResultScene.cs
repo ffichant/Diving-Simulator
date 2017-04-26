@@ -13,7 +13,7 @@ public class ResultScene : MonoBehaviour {
 	void Start ()
 	{
 		sceneLoading = GameObject.FindWithTag ("SceneManager").GetComponent<SceneLoading> ();
-		scoreManager = GameObject.FindWithTag ("ScoreManager").GetComponent<ScoreManager> ();
+		scoreManager = GameObject.FindWithTag ("Score").GetComponent<ScoreManager> ();
 		afficherScore ();
 	}
 

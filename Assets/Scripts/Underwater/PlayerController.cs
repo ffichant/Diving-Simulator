@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         //Conditions de fin prématurée
         if (oxygenBar.GetComponent<Scrollbar>().size == 0f)
         {
-            Score.RegisterLossOfPoints(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
+            Score.RegisterLossOfPointsDive(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
             endButton.SetActiveRecursively(true);
         }
     }
@@ -98,13 +98,13 @@ public class PlayerController : MonoBehaviour {
             oxygenBar.GetComponent<Scrollbar>().size -= 15 * oxygenDecayRate;
             if(firstTimeTouchingJellyfish)
             {
-                Score.RegisterLossOfPoints(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
+                Score.RegisterLossOfPointsDive(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
                 firstTimeTouchingJellyfish = false;
             }
         }
         if(other.tag == "Terrain" && !hasDamagedTerrain)
         {
-            Score.RegisterLossOfPoints(10, "Il ne faut pas trop s'approcher des fonds marins pour ne pas les abîmer !");
+            Score.RegisterLossOfPointsDive(10, "Il ne faut pas trop s'approcher des fonds marins pour ne pas les abîmer !");
             hasDamagedTerrain = true;
         }
 

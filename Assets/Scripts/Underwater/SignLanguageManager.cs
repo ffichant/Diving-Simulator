@@ -136,6 +136,6 @@ public class SignLanguageManager : MonoBehaviour {
     }
 
     private void RemovePointsBecause(int val, string reason){
-          Score.RegisterLossOfPoints(val, reason);
+          Score.RegisterLossOfPointsDive(val, reason);
     }
 }
