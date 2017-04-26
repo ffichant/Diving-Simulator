@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         canvas = GameObject.Find("Canvas");
-        // Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
+        Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
         endButton.SetActiveRecursively(false);
     }
     // Update is called once per frame
@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour {
         //Conditions de fin prématurée
         if (oxygenBar.GetComponent<Scrollbar>().size == 0f)
         {
-            Debug.Log("plus d'oxy");
             Score.RegisterLossOfPoints(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
             endButton.SetActiveRecursively(true);
         }
@@ -96,18 +95,15 @@ public class PlayerController : MonoBehaviour {
     {
         if(other.tag == "Harmful")
         {
-            Debug.Log("JELLYFISH");
             oxygenBar.GetComponent<Scrollbar>().size -= 15 * oxygenDecayRate;
             if(firstTimeTouchingJellyfish)
             {
-                Debug.Log("JELLYFISH_FIRST");
                 Score.RegisterLossOfPoints(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
                 firstTimeTouchingJellyfish = false;
             }
         }
-        if(other.tag == "terrain" && hasDamagedTerrain)
+        if(other.tag == "Terrain" && !hasDamagedTerrain)
         {
-            Debug.Log("Terrain!");
             Score.RegisterLossOfPoints(10, "Il ne faut pas trop s'approcher des fonds marins pour ne pas les abîmer !");
             hasDamagedTerrain = true;
         }

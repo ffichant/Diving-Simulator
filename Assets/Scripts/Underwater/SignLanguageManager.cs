@@ -46,7 +46,7 @@ public class SignLanguageManager : MonoBehaviour {
 
         WaitingForAnswer = false;
 
-        SetupThirdQuiz();
+        //SetupThirdQuiz();
     }
 
     private void Update(){
@@ -111,25 +111,22 @@ public class SignLanguageManager : MonoBehaviour {
 
     public void Button1OnClick(){
         if (ExpectedAnswer != 1) {
-            RemovePointsBecause(5, "Mauvaise r√©ponse √† l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rÈponse ‡† l'instructeur.");
         }
-        else Debug.Log("Bonne r√©ponse.");
         ResumeDiving();
     }
 
     public void Button2OnClick(){
         if (ExpectedAnswer != 2) {
-            RemovePointsBecause(5, "Mauvaise r√©ponse √† l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rÈponse ‡† l'instructeur.");
         }
-        else Debug.Log("Bonne r√©ponse.");
         ResumeDiving();
     }
 
     public void Button3OnClick(){
         if (ExpectedAnswer != 3) {
-            RemovePointsBecause(5, "Mauvaise r√©ponse √† l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rÈponse ‡† l'instructeur.");
         }
-        else Debug.Log("Bonne r√©ponse.");
         ResumeDiving();
     }
 

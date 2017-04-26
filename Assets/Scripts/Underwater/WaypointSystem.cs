@@ -81,7 +81,7 @@ public class WaypointSystem : MonoBehaviour
     //On initialise le pointeur initial à -1 car il sera incrémenté dès la collision
     private int WPindexPointer=-1;
 
-    private bool answeredToQuery;
+    public GameObject signManager;
     // Functions! They do all the work.
     // You can use the built in functions found here: http://unity3d.com/support/documentation/ScriptReference/MonoBehaviour.html
     // Or you can declare your own! The function "Accell()" is one I declared.
@@ -110,7 +110,7 @@ public class WaypointSystem : MonoBehaviour
         // Withouth the "if", "Slow()" would run every frame.
         if (functionState == 1)
         {
-            StartCoroutine(Slow());
+            StartCoroutine(Slow()); 
         }
 
         waypoint = waypoints[WPindexPointer]; //Keep the object pointed toward the current Waypoint object.
@@ -159,7 +159,7 @@ public class WaypointSystem : MonoBehaviour
     //The function "OnTriggerEnter" is called when a collision happens.
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Ontrigger : colliding with : " + other);
+        //Debug.Log("Ontrigger : colliding with : " + other);
         // When the GameObject collides with the waypoint's collider,
         if (waypoint.gameObject == other.gameObject)
         {
@@ -213,25 +213,49 @@ public class WaypointSystem : MonoBehaviour
         // When the "minSpeed" is reached or exceeded ...
         if (currentSpeed <= minSpeed)
         {
+            functionState = 2;
             // ... Stop the movement by setting "currentSpeed to Zero.
             currentSpeed = 0.0f;
             // Wait for the amount of time set in "stopTime" before moving to next waypoint.
             //Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
             //On attend que le joueur réponde au moniteur
-            /*if(waypoint == waypoints[3])
-                yield return new WaitUntil(() => answeredToQuery);
-            if (waypoint == waypoints[4])
-                yield return new WaitUntil(() => answeredToQuery);
-            if (waypoint == waypoints[6])
-                yield return new WaitUntil(() => answeredToQuery );
-            */
-            yield return new WaitForSeconds(stopTime[WPindexPointer]);
-            // Activate the function "Accell()" to move to next waypoint.
-            functionState = 0;
-            answeredToQuery = false;
+            //Vérification de l'état du joueur
+            //Debug.Log("waypoint :"+waypoint);
+            if (waypoint == waypoints[0 + 1])
+            {
+                if (!signManager.GetComponent<SignLanguageManager>().WaitingForAnswer)
+                    signManager.GetComponent<SignLanguageManager>().SetupFirstQuiz();
+                yield return new WaitUntil(() => signManager.GetComponent<SignLanguageManager>().WaitingForAnswer == false);
+                // Activate the function "Accell()" to move to next waypoint.
+                functionState = 0;
+            }
+            //Vérification du manomètre
+            else if (waypoint == waypoints[4 + 1])
+            {
+                signManager.GetComponent<SignLanguageManager>().SetupSecondQuiz();
+                yield return new WaitUntil(() => signManager.GetComponent<SignLanguageManager>().WaitingForAnswer == false);
+                // Activate the function "Accell()" to move to next waypoint.
+                functionState = 0;
+            }
+            //Remontée
+            else if (waypoint == waypoints[8 + 1])
+            {
+                signManager.GetComponent<SignLanguageManager>().SetupThirdQuiz();
+                yield return new WaitUntil(() => signManager.GetComponent<SignLanguageManager>().WaitingForAnswer == false);
+                // Activate the function "Accell()" to move to next waypoint.
+                functionState = 0;
+            }
+            else
+            {
+                yield return new WaitForSeconds(stopTime[WPindexPointer]);
+                // Activate the function "Accell()" to move to next waypoint.
+                functionState = 0;
+            }
+
             //Une fois que le moniteur est arrivé au dernier waypoint, on passe à la scène des scores
-            if(waypoint == waypoints[9])
+            if(waypoint == waypoints[0])
                 SceneManager.LoadScene("Score");
+            
         }
     }
 

@@ -54,6 +54,6 @@ public class ScoreManager : MonoBehaviour {
 
 			PointLoss record = new PointLoss(pts, reason);
 			PointSummary.Add(PointSummary.Count, record);
-			Debug.Log(currentScore);
+			//Debug.Log(currentScore);
 	}
 }
