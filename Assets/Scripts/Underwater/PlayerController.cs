@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject oxygenBar;
     public GameObject palmingBar;
+    public Scrollbar oxygen;
+    public Scrollbar stamina;
     public float oxygenDecayRate;
     public float staminaUseRate;
     public float staminaRegenerationRate;
@@ -28,19 +30,21 @@ public class PlayerController : MonoBehaviour {
         canvas = GameObject.Find("Canvas");
         Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
         endButton.SetActiveRecursively(false);
+        stamina = palmingBar.GetComponent<Scrollbar>();
+        oxygen = oxygenBar.GetComponent<Scrollbar>();
     }
     // Update is called once per frame
     void Update()
     {
         //Utilisation de la stamina
         var deltaStamina = 1.0f;
-        if (Input.GetKey(KeyCode.Space) && (palmingBar.GetComponent<Scrollbar>().size > 0))
+        if (Input.GetKey(KeyCode.Space) && (stamina.size > 0))
         {
-            palmingBar.GetComponent<Scrollbar>().size -= Time.deltaTime * staminaUseRate;
+            stamina.size -= Time.deltaTime * staminaUseRate;
             deltaStamina += horizontalStaminaSpeedBoost;
         }
-        else if (palmingBar.GetComponent<Scrollbar>().size < 1 && !Input.GetKey(KeyCode.Space))
-            palmingBar.GetComponent<Scrollbar>().size += staminaRegenerationRate;
+        else if (stamina.size < 1 && !Input.GetKey(KeyCode.Space))
+            stamina.size += staminaRegenerationRate;
 
         //Déplacement du joueur
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * horizontalSpeed;
@@ -59,16 +63,19 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0, 0, 0) ;
         driftingEffect();
 
-        oxygenBar.GetComponent<Scrollbar>().size = Mathf.Clamp(oxygenBar.GetComponent<Scrollbar>().size - Time.deltaTime * oxygenDecayRate,0,1);
+        oxygen.size = Mathf.Clamp(oxygen.size - Time.deltaTime * oxygenDecayRate,0,1);
         clampPos();
 
 
         //Conditions de fin prématurée
-        if (oxygenBar.GetComponent<Scrollbar>().size == 0f)
+        if (oxygen.size == 0f)
         {
             Score.RegisterLossOfPointsDive(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
             endButton.SetActiveRecursively(true);
         }
+
+        oxygen.value = 0f;
+        stamina.value = 0f;
     }
 
     void driftingEffect()
@@ -95,7 +102,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(other.tag == "Harmful")
         {
-          oxygenBar.GetComponent<Scrollbar>().size = Mathf.Clamp(oxygenBar.GetComponent<Scrollbar>().size - 15 * oxygenDecayRate,0,1);
+          oxygen.size = Mathf.Clamp(oxygen.size - 15 * oxygenDecayRate,0,1);
             if(firstTimeTouchingJellyfish)
             {
                 Score.RegisterLossOfPointsDive(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
