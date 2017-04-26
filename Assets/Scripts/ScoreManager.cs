@@ -78,7 +78,7 @@ public class ScoreManager : MonoBehaviour {
 	public string getAllErrorDive()
 	{
 		string tmp = "Plongée :\n";
-		foreach(KeyValuePair<int, PointLoss> error in PointSummaryPrep)
+		foreach(KeyValuePair<int, PointLoss> error in PointSummaryDive)
 		{
 			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
 		}
