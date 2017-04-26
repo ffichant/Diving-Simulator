@@ -21,6 +21,8 @@ public class EquipmentManager : MonoBehaviour {
     public Sprite CylinderWithDeviceAndRegulator;
     public Sprite CylinderWithDeviceAndRegulatorEquipped;
 
+    public ScoreManager Score;
+
     private bool MaskOn = false;
     private bool SuitOn = false;
     private bool FinsOn = false;
@@ -30,6 +32,9 @@ public class EquipmentManager : MonoBehaviour {
     private bool DivingGearOn = false;
 
     public void Start() {
+
+        Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
+
         Mask = Mask.GetComponent<Button>();
         Suit = Suit.GetComponent<Button>();
         Fins = Fins.GetComponent<Button>();
