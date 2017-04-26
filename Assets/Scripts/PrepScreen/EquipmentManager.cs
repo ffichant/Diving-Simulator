@@ -36,7 +36,7 @@ public class EquipmentManager : MonoBehaviour {
 
     public void Start() {
 
-        Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
+        Score = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
 
         Mask = Mask.GetComponent<Button>();
         Suit = Suit.GetComponent<Button>();
@@ -160,7 +160,7 @@ public class EquipmentManager : MonoBehaviour {
 
     private void RemovePointsBecause(string reason){
         if (LostPoints<20) {
-            Score.RegisterLossOfPoints(2, reason);
+            Score.RegisterLossOfPointsDive(2, reason);
             LostPoints += 2;
         }
     }

@@ -30,28 +30,59 @@ public class ScoreManager : MonoBehaviour {
 
 	// Résumé de toutes les fautes commises par le joueur,
 	// indéxées par ordre croissant.
-	public Dictionary<int,PointLoss> PointSummary;
+	public Dictionary<int,PointLoss> PointSummaryPrep;
+	public Dictionary<int,PointLoss> PointSummaryDive;
 
 	void Start () {
-
-		  DontDestroyOnLoad(this);
-			ResetScoreManager();
+		
 	}
 
 	// Réinitialise le Score Manager.
 	public void ResetScoreManager(){
 
 			currentScore = 100;
-			PointSummary = new Dictionary<int,PointLoss>();
+			PointSummaryPrep = new Dictionary<int,PointLoss>();
+			PointSummaryDive = new Dictionary<int,PointLoss>();
 	}
 
 	// Fonction à appeller pour enregistrer une perte de points.
 	// Modifie le score et enregistre la perte de points dans le dictionnaire.
-	public void RegisterLossOfPoints(int pts, string reason){
+	public void RegisterLossOfPointsPrep(int pts, string reason){
 
 			currentScore -= pts;
 
 			PointLoss record = new PointLoss(pts, reason);
-			PointSummary.Add(PointSummary.Count, record);
+			PointSummaryPrep.Add(PointSummaryPrep.Count, record);
 	}
+
+	public void RegisterLossOfPointsDive(int pts, string reason){
+
+		currentScore -= pts;
+
+		PointLoss record = new PointLoss(pts, reason);
+		PointSummaryDive.Add(PointSummaryDive.Count, record);
+	}
+
+	public string getAllErrorPrep()
+	{
+		string tmp = "Préparation :\n";
+		foreach(KeyValuePair<int, PointLoss> error in PointSummaryPrep)
+		{
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+		}
+		tmp += "\n\n";
+		return tmp;
+	}
+
+	public string getAllErrorDive()
+	{
+		string tmp = "Plongée :\n";
+		foreach(KeyValuePair<int, PointLoss> error in PointSummaryPrep)
+		{
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+		}
+		tmp += "\n\n";
+		return tmp;
+	}
+
 }
