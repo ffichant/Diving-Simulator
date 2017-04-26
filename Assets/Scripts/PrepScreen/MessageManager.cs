@@ -9,14 +9,14 @@ public class MessageManager : MonoBehaviour {
     public Button HelpButton;
     public Text Message;
 
-    [HideInInspector] public string FinsError = "Tu ne dois enfiler les palmes que lorsque tu es prêt à plonger, sinon tu risquerais de tomber!";
-    [HideInInspector] public string MaskError = "Tu n'as pas besoin d'enfiler ton masque avant d'avoir fini de préparer ton scaphandre.";
-    [HideInInspector] public string WeightsError = "Tu ne vas pas porter ta ceinture de poids à même la peau, si?";
-    [HideInInspector] public string RegulatorError = "Si tu installes le détendeur en premier, tu auras beaucoup de mal à passer le gilet de plongée.";
+    [HideInInspector] public string FinsError = "Tu ne dois enfiler les palmes que lorsque tu es prêt a plonger, sinon tu risquerais de tomber!";
+    [HideInInspector] public string MaskError = "Tu n'as pas besoin d'enfiler ton masque avant d'avoir fini de preparer ton scaphandre.";
+    [HideInInspector] public string WeightsError = "Tu ne vas pas porter ta ceinture de poids a même la peau, si?";
+    [HideInInspector] public string RegulatorError = "Si tu installes le detendeur en premier, tu auras beaucoup de mal a passer le gilet de plongee.";
     [HideInInspector] public string DivingGearError = "Habilles toi avant d'enfiler ton scaphandre.";
-    [HideInInspector] public string DivingGearError2 = "Tu n'as pas fini d'équiper ton scaphandre.";
-    [HideInInspector] public string Instructions = "Prépare ton équipement avant la plongée en cliquant sur les différentes pièces dans le bon ordre! Cliquer sur une pièce permet de l'équiper ou de l'enfiler.\nTu perds des points à chaque fois que tu cliques sur un équipement en dehors de l'ordre de préparation habituel.";
-    [HideInInspector] public string Congratz = "Bravo, tu es fin prêt à plonger!";
+    [HideInInspector] public string DivingGearError2 = "Tu n'as pas fini d'equiper ton scaphandre.";
+    [HideInInspector] public string Instructions = "Prepare ton equipement avant la plongee en cliquant sur les differentes pièces dans le bon ordre! Cliquer sur une pièce permet de l'equiper ou de l'enfiler.\nTu perds des points a chaque fois que tu cliques sur un equipement en dehors de l'ordre de preparation habituel.";
+    [HideInInspector] public string Congratz = "Bravo, tu es fin prêt a plonger!";
 
     private void Start(){
 

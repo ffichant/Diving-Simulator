@@ -78,7 +78,7 @@ public class WaypointSystem : MonoBehaviour
 
     // This variable keeps track of which Waypoint Object,
     // in the previously mentioned array variable "waypoints", is currently active.
-    //On initialise le pointeur initial à -1 car il sera incrémenté dès la collision
+    //On initialise le pointeur initial a -1 car il sera incremente dès la collision
     private int WPindexPointer=-1;
 
     public GameObject signManager;
@@ -132,7 +132,7 @@ public class WaypointSystem : MonoBehaviour
         // I grabbed this next part from the unity "SmoothLookAt" script but try to explain more.
         if (waypoint) //If there is a waypoint do the next "if".
         {
-            //Debug.Log("Waypoint trouvé, déplacement vers lui");
+            //Debug.Log("Waypoint trouve, deplacement vers lui");
             transform.position = Vector3.MoveTowards(transform.position, waypoint.position, currentSpeed * Time.deltaTime);
             if (waypoint.position.x - transform.position.x > 0)
                 horizontalMovementDirection = 1;
@@ -218,8 +218,8 @@ public class WaypointSystem : MonoBehaviour
             currentSpeed = 0.0f;
             // Wait for the amount of time set in "stopTime" before moving to next waypoint.
             //Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
-            //On attend que le joueur réponde au moniteur
-            //Vérification de l'état du joueur
+            //On attend que le joueur reponde au moniteur
+            //Verification de l'etat du joueur
             //Debug.Log("waypoint :"+waypoint);
             if (waypoint == waypoints[0 + 1])
             {
@@ -229,7 +229,7 @@ public class WaypointSystem : MonoBehaviour
                 // Activate the function "Accell()" to move to next waypoint.
                 functionState = 0;
             }
-            //Vérification du manomètre
+            //Verification du manomètre
             else if (waypoint == waypoints[4 + 1])
             {
                 signManager.GetComponent<SignLanguageManager>().SetupSecondQuiz();
@@ -237,7 +237,7 @@ public class WaypointSystem : MonoBehaviour
                 // Activate the function "Accell()" to move to next waypoint.
                 functionState = 0;
             }
-            //Remontée
+            //Remontee
             else if (waypoint == waypoints[8 + 1])
             {
                 signManager.GetComponent<SignLanguageManager>().SetupThirdQuiz();
@@ -252,7 +252,7 @@ public class WaypointSystem : MonoBehaviour
                 functionState = 0;
             }
 
-            //Une fois que le moniteur est arrivé au dernier waypoint, on passe à la scène des scores
+            //Une fois que le moniteur est arrive au dernier waypoint, on passe a la scène des scores
             if(waypoint == waypoints[0])
                 SceneManager.LoadScene("Score");
             
