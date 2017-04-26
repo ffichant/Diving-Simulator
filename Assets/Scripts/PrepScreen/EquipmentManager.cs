@@ -22,6 +22,7 @@ public class EquipmentManager : MonoBehaviour {
     public Sprite CylinderWithDeviceAndRegulatorEquipped;
 
     public ScoreManager Score;
+    public int LostPoints = 0;
 
     private bool MaskOn = false;
     private bool SuitOn = false;
@@ -82,7 +83,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Regulator error");
+            RemovePointsBecause("Détendeur équipé avant le gilet.");
         }
     }
 
@@ -102,7 +103,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Weights error");
+            RemovePointsBecause("Poids équipés avant la combinaison.");
         }
     }
 
@@ -114,7 +115,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Gear error");
+            RemovePointsBecause("Scaphandre équipé avant la combinaison et les poids.");
         }
     }
 
@@ -126,19 +127,26 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Fins error");
+            RemovePointsBecause("Palmes équipées avant le scaphandre.");
         }
     }
 
     private void MaskOnClick(){
-      if (FinsOn) {
-          if (!MaskOn) {
-              MaskOn = true;
-              Mask.image.sprite = MaskEquipped;
-          }
-      }
-      else {
-          Debug.Log("Mask error");
-      }
+        if (DivingGearOn) {
+            if (!MaskOn) {
+                MaskOn = true;
+                Mask.image.sprite = MaskEquipped;
+            }
+        }
+        else {
+            RemovePointsBecause("Masque équipé avant le scaphandre");
+        }
+    }
+
+    private void RemovePointsBecause(string reason){
+        if (LostPoints<20) {
+            RegisterLossOfPoints(2, reason);
+            LostPoints += 2;
+        }
     }
 }
