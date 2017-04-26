@@ -3550,7 +3550,7 @@ MonoBehaviour:
   Sign_Stop: {fileID: 21300000, guid: f29bed15ef05f47e59199efa198c5635, type: 3}
   Sign_No: {fileID: 21300000, guid: 488a97790bd444fe684ed45bac2bd78f, type: 3}
   WaitingForTrigger: 0
-  Trigger: {fileID: 0}
+  Trigger: {fileID: 1755609332}
 --- !u!4 &1778279777
 Transform:
   m_ObjectHideFlags: 0
