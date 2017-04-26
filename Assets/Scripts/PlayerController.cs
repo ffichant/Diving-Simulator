@@ -39,11 +39,17 @@ public class PlayerController : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("TurningRight");
 
 
-        //Prise en compte de l'oscillation de la position dans l'eau
-        var deltaY = Time.deltaTime*verticalSpeed*Mathf.Cos(Time.realtimeSinceStartup) * verticalOscillationCoeff;
-        transform.Translate(x*deltaStamina, y+deltaY, 0);
-
+       
+        transform.Translate(x*deltaStamina, y, 0);
+        driftingEffect();
 
         oxygenBar.GetComponent<Scrollbar>().size -= Time.deltaTime * oxygenDecayRate;
+    }
+
+    void driftingEffect()
+    {
+        //Prise en compte de l'oscillation de la position dans l'eau
+        var deltaY = Time.deltaTime * verticalSpeed * Mathf.Cos(Time.realtimeSinceStartup) * verticalOscillationCoeff;
+        transform.Translate(0, deltaY, 0);
     }
 }
