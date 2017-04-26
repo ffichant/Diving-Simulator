@@ -21,8 +21,17 @@ public class SignLanguageManager : MonoBehaviour {
 
     public bool PlayerInRange;
     public ProximityTrigger Trigger;
+    public bool WaitingForAnswer;
+
+    private int ExpectedAnswer;
+
+    public GameObject oxygenBar;
+
+    public ScoreManager Score;
 
     private void Start(){
+
+        Score = GameObject.FindWithTag("Score").GetComponent<ScoreManager>();
 
         Instructor = Instructor.GetComponent<Image>();
         InstructorPanel.SetActive(false);
@@ -30,9 +39,26 @@ public class SignLanguageManager : MonoBehaviour {
         Player1st = Player1st.GetComponent<Button>();
         Player2nd = Player2nd.GetComponent<Button>();
         Player3rd = Player3rd.GetComponent<Button>();
+        Player1st.onClick.AddListener(Button1OnClick);
+        Player2nd.onClick.AddListener(Button2OnClick);
+        Player3rd.onClick.AddListener(Button3OnClick);
         PlayerPanel.SetActive(false);
 
-        PlayerInRange = false;
+        WaitingForAnswer = false;
+
+        SetupThirdQuiz();
+    }
+
+    private void Update(){
+        if (WaitingForAnswer){
+            if (PlayerInRange && !PlayerPanel.activeSelf){
+               PlayerPanel.SetActive(true);
+            }
+            if (!PlayerInRange && PlayerPanel.activeSelf){
+               PlayerPanel.SetActive(false);
+            }
+        }
+        else if (PlayerPanel.activeSelf) PlayerPanel.SetActive(false);
     }
 
     public void SetupFirstQuiz(){
@@ -40,11 +66,79 @@ public class SignLanguageManager : MonoBehaviour {
         InstructorPanel.SetActive(true);
         Instructor.sprite = Sign_Ok;
 
-        /*
         Player1st.image.sprite = Sign_Up;
         Player2nd.image.sprite = Sign_Ok;
         Player3rd.image.sprite = Sign_Stop;
-        */
+
+        ExpectedAnswer = 2;
+        WaitingForAnswer = true;
     }
 
+    public void SetupSecondQuiz(){
+
+        InstructorPanel.SetActive(true);
+        Instructor.sprite = Sign_Manometer;
+
+        Player1st.image.sprite = Sign_Ok;
+        Player2nd.image.sprite = Sign_HalfGauge;
+        Player3rd.image.sprite = Sign_Reserve;
+
+        float currentAir = oxygenBar.GetComponent<Scrollbar>().size;
+        if (currentAir>0.6f) {
+            ExpectedAnswer = 1;
+        }
+        else if (currentAir>0.35f) {
+            ExpectedAnswer = 2;
+        }
+        else {
+          ExpectedAnswer = 3;
+        }
+        WaitingForAnswer = true;
+    }
+
+    public void SetupThirdQuiz(){
+
+        InstructorPanel.SetActive(true);
+        Instructor.sprite = Sign_Up;
+
+        Player1st.image.sprite = Sign_Up;
+        Player2nd.image.sprite = Sign_Ok;
+        Player3rd.image.sprite = Sign_No;
+
+        ExpectedAnswer = 2;
+        WaitingForAnswer = true;
+    }
+
+    public void Button1OnClick(){
+        if (ExpectedAnswer != 1) {
+            RemovePointsBecause(5, "Mauvaise réponse à l'instructeur.");
+        }
+        else Debug.Log("Bonne réponse.");
+        ResumeDiving();
+    }
+
+    public void Button2OnClick(){
+        if (ExpectedAnswer != 2) {
+            RemovePointsBecause(5, "Mauvaise réponse à l'instructeur.");
+        }
+        else Debug.Log("Bonne réponse.");
+        ResumeDiving();
+    }
+
+    public void Button3OnClick(){
+        if (ExpectedAnswer != 3) {
+            RemovePointsBecause(5, "Mauvaise réponse à l'instructeur.");
+        }
+        else Debug.Log("Bonne réponse.");
+        ResumeDiving();
+    }
+
+    private void ResumeDiving(){
+        WaitingForAnswer = false;
+        InstructorPanel.SetActive(false);
+    }
+
+    private void RemovePointsBecause(int val, string reason){
+          Score.RegisterLossOfPoints(val, reason);
+    }
 }
