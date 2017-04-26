@@ -16,6 +16,7 @@ public class SceneLoading : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		/*
         //Gérer les inputs du joueur
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -38,7 +39,8 @@ public class SceneLoading : MonoBehaviour {
             loadedSceneID = 3;
             SceneManager.LoadScene("Score", LoadSceneMode.Additive);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else */
+		if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
             //quit game
@@ -47,6 +49,20 @@ public class SceneLoading : MonoBehaviour {
 #endif      
         }
     }
+
+	public void loadScene(string sceneName)
+	{
+		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+	}
+
+	public void quitGame()
+	{
+		Application.Quit ();
+		#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+		#endif      
+	}
+
 
     void unloadCurrentScene()
     {
