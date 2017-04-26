@@ -50,8 +50,10 @@ public class ScoreManager : MonoBehaviour {
 	public void RegisterLossOfPoints(int pts, string reason){
 
 			currentScore -= pts;
+			if (currentScore<0) currentScore = 0;
 
 			PointLoss record = new PointLoss(pts, reason);
 			PointSummary.Add(PointSummary.Count, record);
+			Debug.Log(currentScore);
 	}
 }

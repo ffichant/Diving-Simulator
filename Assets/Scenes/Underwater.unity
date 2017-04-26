@@ -3763,6 +3763,9 @@ MonoBehaviour:
   Sign_No: {fileID: 21300000, guid: 488a97790bd444fe684ed45bac2bd78f, type: 3}
   PlayerInRange: 0
   Trigger: {fileID: 1755609332}
+  WaitingForAnswer: 0
+  oxygenBar: {fileID: 1867382697}
+  Score: {fileID: 0}
 --- !u!4 &1778279777
 Transform:
   m_ObjectHideFlags: 0
