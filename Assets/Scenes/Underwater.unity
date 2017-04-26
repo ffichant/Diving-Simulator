@@ -2954,6 +2954,11 @@ Prefab:
       propertyPath: stopTime.Array.data[0]
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 54651526441630730, guid: ab4fccc5f920fdb478953bf1c0f6ed75,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab4fccc5f920fdb478953bf1c0f6ed75, type: 2}
   m_IsPrefabParent: 0
@@ -3495,6 +3500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d987c889c99444fb8b381d230817e4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCollider: {fileID: 830036145}
+  SLManager: {fileID: 1778279776}
 --- !u!58 &1755609333
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3549,7 +3556,7 @@ MonoBehaviour:
   Sign_Up: {fileID: 21300000, guid: 421a0c78203a341da86de93d5d6e4afb, type: 3}
   Sign_Stop: {fileID: 21300000, guid: f29bed15ef05f47e59199efa198c5635, type: 3}
   Sign_No: {fileID: 21300000, guid: 488a97790bd444fe684ed45bac2bd78f, type: 3}
-  WaitingForTrigger: 0
+  PlayerInRange: 0
   Trigger: {fileID: 1755609332}
 --- !u!4 &1778279777
 Transform:

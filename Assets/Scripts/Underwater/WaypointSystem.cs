@@ -144,7 +144,7 @@ public class WaypointSystem : MonoBehaviour
         }
 
         //transform.Translate(Time.deltaTime * currentSpeed, 0, 0);
-       
+
 
         // When the "speedlimit" is reached or exceeded ...
         if (currentSpeed >= speedLimit)
@@ -216,7 +216,7 @@ public class WaypointSystem : MonoBehaviour
             // ... Stop the movement by setting "currentSpeed to Zero.
             currentSpeed = 0.0f;
             // Wait for the amount of time set in "stopTime" before moving to next waypoint.
-            Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
+            //Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
             //On attend que le joueur réponde au moniteur
             /*if(waypoint == waypoints[3])
                 yield return new WaitUntil(() => answeredToQuery);

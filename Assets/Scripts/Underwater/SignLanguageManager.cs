@@ -19,7 +19,7 @@ public class SignLanguageManager : MonoBehaviour {
     public Sprite Sign_Stop;
     public Sprite Sign_No;
 
-    public bool WaitingForTrigger;
+    public bool PlayerInRange;
     public ProximityTrigger Trigger;
 
     private void Start(){
@@ -32,15 +32,13 @@ public class SignLanguageManager : MonoBehaviour {
         Player3rd = Player3rd.GetComponent<Button>();
         PlayerPanel.SetActive(false);
 
-        WaitingForTrigger = false;
+        PlayerInRange = false;
     }
 
     public void SetupFirstQuiz(){
 
         InstructorPanel.SetActive(true);
         Instructor.sprite = Sign_Ok;
-
-        WaitingForTrigger = true;
 
         /*
         Player1st.image.sprite = Sign_Up;
