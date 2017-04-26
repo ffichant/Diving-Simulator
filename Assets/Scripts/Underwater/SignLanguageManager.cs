@@ -20,6 +20,7 @@ public class SignLanguageManager : MonoBehaviour {
     public Sprite Sign_No;
 
     public bool WaitingForTrigger;
+    public ProximityTrigger Trigger;
 
     private void Start(){
 
