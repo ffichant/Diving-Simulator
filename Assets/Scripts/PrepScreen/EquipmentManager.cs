@@ -24,6 +24,8 @@ public class EquipmentManager : MonoBehaviour {
     public ScoreManager Score;
     public int LostPoints = 0;
 
+    public MessageManager Message;
+
     private bool MaskOn = false;
     private bool SuitOn = false;
     private bool FinsOn = false;
@@ -84,6 +86,7 @@ public class EquipmentManager : MonoBehaviour {
         }
         else {
             RemovePointsBecause("Détendeur équipé avant le gilet.");
+            Message.OpenMessageBoxWithMessage(Message.RegulatorError);
         }
     }
 
@@ -104,6 +107,7 @@ public class EquipmentManager : MonoBehaviour {
         }
         else {
             RemovePointsBecause("Poids équipés avant la combinaison.");
+            Message.OpenMessageBoxWithMessage(Message.WeightsError);
         }
     }
 
@@ -115,7 +119,14 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            RemovePointsBecause("Scaphandre équipé avant la combinaison et les poids.");
+            if (RegulatorOn) {
+                RemovePointsBecause("Scaphandre équipé avant la combinaison et les poids.");
+                Message.OpenMessageBoxWithMessage(Message.DivingGearError);
+            }
+            else {
+                RemovePointsBecause("Scaphandre incomplet équipé.");
+                Message.OpenMessageBoxWithMessage(Message.DivingGearError2);
+            }
         }
     }
 
@@ -124,10 +135,12 @@ public class EquipmentManager : MonoBehaviour {
             if (!FinsOn) {
                 FinsOn = true;
                 Fins.image.sprite = FinsEquipped;
+                if (MaskOn) PrepareDivingSceneLoad();
             }
         }
         else {
             RemovePointsBecause("Palmes équipées avant le scaphandre.");
+            Message.OpenMessageBoxWithMessage(Message.FinsError);
         }
     }
 
@@ -136,10 +149,12 @@ public class EquipmentManager : MonoBehaviour {
             if (!MaskOn) {
                 MaskOn = true;
                 Mask.image.sprite = MaskEquipped;
+                if (FinsOn) PrepareDivingSceneLoad();
             }
         }
         else {
             RemovePointsBecause("Masque équipé avant le scaphandre");
+            Message.OpenMessageBoxWithMessage(Message.MaskError);
         }
     }
 
@@ -148,5 +163,9 @@ public class EquipmentManager : MonoBehaviour {
             Score.RegisterLossOfPoints(2, reason);
             LostPoints += 2;
         }
+    }
+
+    private void PrepareDivingSceneLoad(){
+        Message.OpenFinalMessageBox();
     }
 }
