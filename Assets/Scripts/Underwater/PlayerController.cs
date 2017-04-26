@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour {
     public float oxygenDecayRate;
     public float staminaUseRate;
     public float staminaRegenerationRate;
-    public float horizontalStaminaSpeedBoost;//Représente un coefficient multiplicateur
+    public float horizontalStaminaSpeedBoost; //Représente un coefficient multiplicateur
     public float horizontalSpeed;
     public float verticalSpeed;
     public float verticalOscillationCoeff;
 
- 
+
     public GameObject canvas;
     public ScoreManager Score;
     private bool hasDamagedTerrain = false;
@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("TurningRight");
 
 
-       
+
         transform.Translate(x*deltaStamina, y, 0);
         //On s'assure que le joueur ne fait pas de rotation quand il y a une collision
         transform.rotation = Quaternion.Euler(0, 0, 0) ;
         driftingEffect();
 
-        oxygenBar.GetComponent<Scrollbar>().size -= Time.deltaTime * oxygenDecayRate;
+        oxygenBar.GetComponent<Scrollbar>().size = Mathf.Clamp(oxygenBar.GetComponent<Scrollbar>().size - Time.deltaTime * oxygenDecayRate,0,1);
         clampPos();
 
 
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
         var deltaY = Time.deltaTime * verticalSpeed * Mathf.Cos(Time.realtimeSinceStartup) * verticalOscillationCoeff;
         transform.Translate(0, deltaY, 0);
     }
-    
+
     void clampPos()
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(other.tag == "Harmful")
         {
-            oxygenBar.GetComponent<Scrollbar>().size -= 15 * oxygenDecayRate;
+          oxygenBar.GetComponent<Scrollbar>().size = Mathf.Clamp(oxygenBar.GetComponent<Scrollbar>().size - 15 * oxygenDecayRate,0,1);
             if(firstTimeTouchingJellyfish)
             {
                 Score.RegisterLossOfPointsDive(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");

@@ -84,6 +84,7 @@ public class SignLanguageManager : MonoBehaviour {
         Player3rd.image.sprite = Sign_Reserve;
 
         float currentAir = oxygenBar.GetComponent<Scrollbar>().size;
+        Debug.Log(currentAir);
         if (currentAir>0.6f) {
             ExpectedAnswer = 1;
         }
@@ -111,21 +112,21 @@ public class SignLanguageManager : MonoBehaviour {
 
     public void Button1OnClick(){
         if (ExpectedAnswer != 1) {
-            RemovePointsBecause(5, "Mauvaise réponse à  l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rï¿½ponse ï¿½ï¿½ l'instructeur.");
         }
         ResumeDiving();
     }
 
     public void Button2OnClick(){
         if (ExpectedAnswer != 2) {
-            RemovePointsBecause(5, "Mauvaise réponse à  l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rï¿½ponse ï¿½ï¿½ l'instructeur.");
         }
         ResumeDiving();
     }
 
     public void Button3OnClick(){
         if (ExpectedAnswer != 3) {
-            RemovePointsBecause(5, "Mauvaise réponse à  l'instructeur.");
+            RemovePointsBecause(5, "Mauvaise rï¿½ponse ï¿½ï¿½ l'instructeur.");
         }
         ResumeDiving();
     }
