@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Example of a Waypoint system taken from https://forum.unity3d.com/threads/a-waypoint-script-explained-in-super-detail.54678/, courtesy of user "cherub"
 //Adapted for personal use
@@ -79,6 +80,7 @@ public class WaypointSystem : MonoBehaviour
     // in the previously mentioned array variable "waypoints", is currently active.
     private int WPindexPointer=0;
 
+    private bool answeredToQuery;
     // Functions! They do all the work.
     // You can use the built in functions found here: http://unity3d.com/support/documentation/ScriptReference/MonoBehaviour.html
     // Or you can declare your own! The function "Accell()" is one I declared.
@@ -214,9 +216,20 @@ public class WaypointSystem : MonoBehaviour
             currentSpeed = 0.0f;
             // Wait for the amount of time set in "stopTime" before moving to next waypoint.
             Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
+            //On attend que le joueur réponde au moniteur
+            if(waypoint.gameObject == waypoints[3])
+                yield return new WaitUntil(() => answeredToQuery);
+            if (waypoint.gameObject == waypoints[4])
+                yield return new WaitUntil(() => answeredToQuery);
+            if (waypoint.gameObject == waypoints[6])
+                yield return new WaitUntil(() => answeredToQuery);
             yield return new WaitForSeconds(stopTime[WPindexPointer]);
             // Activate the function "Accell()" to move to next waypoint.
             functionState = 0;
+            answeredToQuery = false;
+            //Une fois que le moniteur est arrivé au dernier waypoint, on passe à la scène des scores
+            if(waypoint.gameObject == waypoints[9])
+                SceneManager.LoadScene("Score");
         }
     }
 

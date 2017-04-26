@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
         float minX = -4.8f;
         float minY = -3.8f;
-        float maxX = 4.8f;
+        float maxX = 4.8f;  
         float maxY = 3.8f;
         transform.position = new Vector3(
           Mathf.Clamp(player.transform.position.x, minX, maxX),
