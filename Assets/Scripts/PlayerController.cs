@@ -14,7 +14,13 @@ public class PlayerController : MonoBehaviour {
     public float horizontalSpeed;
     public float verticalSpeed;
     public float verticalOscillationCoeff;
+
+    public GameObject canvas;
     
+    void Start()
+    {
+        canvas = GameObject.Find("Canvas");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour {
         driftingEffect();
 
         oxygenBar.GetComponent<Scrollbar>().size -= Time.deltaTime * oxygenDecayRate;
+        clampPos();
     }
 
     void driftingEffect()
@@ -51,5 +58,18 @@ public class PlayerController : MonoBehaviour {
         //Prise en compte de l'oscillation de la position dans l'eau
         var deltaY = Time.deltaTime * verticalSpeed * Mathf.Cos(Time.realtimeSinceStartup) * verticalOscillationCoeff;
         transform.Translate(0, deltaY, 0);
+    }
+    
+    void clampPos()
+    {
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        float minX = -5.75f;
+        float minY = -4.5f;
+        float maxX = 5.75f;
+        float maxY = 4.5f;
+        transform.position = new Vector3(
+          Mathf.Clamp(transform.position.x, minX, maxX),
+          Mathf.Clamp(transform.position.y, minY, maxY),
+          transform.position.z);
     }
 }

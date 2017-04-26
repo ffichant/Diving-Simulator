@@ -15,12 +15,10 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        float minX = canvas.transform.position.x - (canvasRect.rect.width/2*canvasRect.localScale.x);
-        float minY = canvas.transform.position.y - (canvasRect.rect.height/2*canvasRect.localScale.y);
-        float maxX = canvas.transform.position.x + (canvasRect.rect.width/2*canvasRect.localScale.x);
-        float maxY = canvas.transform.position.y + (canvasRect.rect.height/2*canvasRect.localScale.y);
-        Debug.Log("Test : minX= " + minX + " maxX= " + maxX);
-        //transform.Translate(movement * speed * Time.deltaTime, Space.Self);
+        float minX = -4.8f;
+        float minY = -3.8f;
+        float maxX = 4.8f;
+        float maxY = 3.8f;
         transform.position = new Vector3(
           Mathf.Clamp(player.transform.position.x, minX, maxX),
           Mathf.Clamp(player.transform.position.y, minY, maxY),
