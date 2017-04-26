@@ -5,8 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Score
+<<<<<<< HEAD
   - Terrain
   - Harmful
+=======
+  - SceneManager
+  - ScoreManager
+>>>>>>> 999bbf216c8ef03952a395be0a4aa4fa92a284b8
   layers:
   - Default
   - TransparentFX
