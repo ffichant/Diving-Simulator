@@ -78,7 +78,8 @@ public class WaypointSystem : MonoBehaviour
 
     // This variable keeps track of which Waypoint Object,
     // in the previously mentioned array variable "waypoints", is currently active.
-    private int WPindexPointer=0;
+    //On initialise le pointeur initial à -1 car il sera incrémenté dès la collision
+    private int WPindexPointer=-1;
 
     private bool answeredToQuery;
     // Functions! They do all the work.
@@ -217,18 +218,19 @@ public class WaypointSystem : MonoBehaviour
             // Wait for the amount of time set in "stopTime" before moving to next waypoint.
             Debug.Log("Stopping for " + stopTime[WPindexPointer] + " seconds at waypoint "+waypoint);
             //On attend que le joueur réponde au moniteur
-            if(waypoint.gameObject == waypoints[3])
+            /*if(waypoint == waypoints[3])
                 yield return new WaitUntil(() => answeredToQuery);
-            if (waypoint.gameObject == waypoints[4])
+            if (waypoint == waypoints[4])
                 yield return new WaitUntil(() => answeredToQuery);
-            if (waypoint.gameObject == waypoints[6])
-                yield return new WaitUntil(() => answeredToQuery);
+            if (waypoint == waypoints[6])
+                yield return new WaitUntil(() => answeredToQuery );
+            */
             yield return new WaitForSeconds(stopTime[WPindexPointer]);
             // Activate the function "Accell()" to move to next waypoint.
             functionState = 0;
             answeredToQuery = false;
             //Une fois que le moniteur est arrivé au dernier waypoint, on passe à la scène des scores
-            if(waypoint.gameObject == waypoints[9])
+            if(waypoint == waypoints[9])
                 SceneManager.LoadScene("Score");
         }
     }

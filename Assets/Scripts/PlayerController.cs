@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour {
 
        
         transform.Translate(x*deltaStamina, y, 0);
+        //On s'assure que le joueur ne fait pas de rotation quand il y a une collision
+        transform.rotation = Quaternion.Euler(0, 0, 0) ;
         driftingEffect();
 
         oxygenBar.GetComponent<Scrollbar>().size -= Time.deltaTime * oxygenDecayRate;
