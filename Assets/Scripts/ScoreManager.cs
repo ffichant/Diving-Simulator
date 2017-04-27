@@ -69,7 +69,7 @@ public class ScoreManager : MonoBehaviour {
 		string tmp = "Preparation :\n";
 		foreach(KeyValuePair<int, PointLoss> error in PointSummaryPrep)
 		{
-			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason + "\n";
 		}
 		tmp += "\n\n";
 		return tmp;
@@ -80,7 +80,7 @@ public class ScoreManager : MonoBehaviour {
 		string tmp = "Plongee :\n";
 		foreach(KeyValuePair<int, PointLoss> error in PointSummaryDive)
 		{
-			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason + "\n";
 		}
 		tmp += "\n\n";
 		return tmp;

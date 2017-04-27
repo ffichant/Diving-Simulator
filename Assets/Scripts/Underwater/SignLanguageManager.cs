@@ -84,7 +84,7 @@ public class SignLanguageManager : MonoBehaviour {
         Player3rd.image.sprite = Sign_Reserve;
 
         float currentAir = oxygenBar.GetComponent<Scrollbar>().size;
-        Debug.Log(currentAir);
+        //Debug.Log(currentAir);
         if (currentAir>0.6f) {
             ExpectedAnswer = 1;
         }
