@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
 
-	/*	Pour enregistrer une perte de point, appeller:
+    /*	Pour enregistrer une perte de point, appeller:
 			RegisterLossOfPoints(int Nombre de points perdus, string Raison);
 
 			Pour lister toutes les pertes de points (Valeur ET Raison):
@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour {
 			}
 	*/
 
-	// Structure de données permettant de garder une trace des pertes de points.
+    // Structure de donnees permettant de garder une trace des pertes de points.
 	public struct PointLoss {
 			public int Points;
 			public string Reason;
@@ -28,8 +28,8 @@ public class ScoreManager : MonoBehaviour {
 	// Score actuel du joueur.
 	public int currentScore;
 
-	// Résumé de toutes les fautes commises par le joueur,
-	// indéxées par ordre croissant.
+	// Resume de toutes les fautes commises par le joueur,
+	// indexees par ordre croissant.
 	public Dictionary<int,PointLoss> PointSummaryPrep;
 	public Dictionary<int,PointLoss> PointSummaryDive;
 
@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour {
         ResetScoreManager();
 	}
 
-	// Réinitialise le Score Manager.
+	// Reinitialise le Score Manager.
 	public void ResetScoreManager(){
 
 			currentScore = 100;
@@ -46,7 +46,7 @@ public class ScoreManager : MonoBehaviour {
 			PointSummaryDive = new Dictionary<int,PointLoss>();
 	}
 
-	// Fonction à appeller pour enregistrer une perte de points.
+	// Fonction a appeller pour enregistrer une perte de points.
 	// Modifie le score et enregistre la perte de points dans le dictionnaire.
 	public void RegisterLossOfPointsPrep(int pts, string reason){
 
@@ -66,10 +66,10 @@ public class ScoreManager : MonoBehaviour {
 
 	public string getAllErrorPrep()
 	{
-		string tmp = "Préparation :\n";
+		string tmp = "Preparation :\n";
 		foreach(KeyValuePair<int, PointLoss> error in PointSummaryPrep)
 		{
-			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason + "\n";
 		}
 		tmp += "\n\n";
 		return tmp;
@@ -77,10 +77,10 @@ public class ScoreManager : MonoBehaviour {
 
 	public string getAllErrorDive()
 	{
-		string tmp = "Plongée :\n";
+		string tmp = "Plongee :\n";
 		foreach(KeyValuePair<int, PointLoss> error in PointSummaryDive)
 		{
-			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason;
+			tmp += "-" +error.Value.Points + "%" +  "\t\t" + error.Value.Reason + "\n";
 		}
 		tmp += "\n\n";
 		return tmp;

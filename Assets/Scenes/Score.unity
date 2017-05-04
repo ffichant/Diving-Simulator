@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 250353772}
   - component: {fileID: 250353771}
   - component: {fileID: 250353770}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +177,7 @@ RectTransform:
   m_Children:
   - {fileID: 660582723}
   - {fileID: 1670826649}
+  - {fileID: 799892403}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,7 +246,7 @@ GameObject:
   - component: {fileID: 534634890}
   - component: {fileID: 534634889}
   - component: {fileID: 534634888}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelBackMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -336,7 +337,7 @@ GameObject:
   - component: {fileID: 660582723}
   - component: {fileID: 660582725}
   - component: {fileID: 660582724}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,6 +395,68 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 660582722}
+--- !u!1 &799892402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 799892403}
+  - component: {fileID: 799892405}
+  - component: {fileID: 799892404}
+  m_Layer: 5
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799892403
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799892402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 250353773}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &799892404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799892402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &799892405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799892402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!1 &1014771229
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +468,7 @@ GameObject:
   - component: {fileID: 1014771233}
   - component: {fileID: 1014771232}
   - component: {fileID: 1014771231}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelTextScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +560,7 @@ GameObject:
   - component: {fileID: 1140501946}
   - component: {fileID: 1140501948}
   - component: {fileID: 1140501947}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +634,7 @@ GameObject:
   - component: {fileID: 1179853951}
   - component: {fileID: 1179853953}
   - component: {fileID: 1179853952}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextScoreTotal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +709,7 @@ GameObject:
   - component: {fileID: 1337095505}
   - component: {fileID: 1337095504}
   - component: {fileID: 1337095503}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelTitre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +801,7 @@ GameObject:
   - component: {fileID: 1377983245}
   - component: {fileID: 1377983244}
   - component: {fileID: 1377983243}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ButtonBackMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +911,7 @@ GameObject:
   - component: {fileID: 1379752804}
   - component: {fileID: 1379752806}
   - component: {fileID: 1379752805}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,10 +957,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 929d77ca78c7740f28bd63358ba6bd73, type: 3}
-    m_FontSize: 45
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1009,7 +1072,7 @@ GameObject:
   - component: {fileID: 1457975035}
   - component: {fileID: 1457975037}
   - component: {fileID: 1457975036}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,7 +1148,7 @@ GameObject:
   - component: {fileID: 1670826651}
   - component: {fileID: 1670826650}
   - component: {fileID: 1670826653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1148,7 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

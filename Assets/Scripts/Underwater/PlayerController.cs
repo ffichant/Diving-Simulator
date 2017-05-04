@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float oxygenDecayRate;
     public float staminaUseRate;
     public float staminaRegenerationRate;
-    public float horizontalStaminaSpeedBoost; //Représente un coefficient multiplicateur
+    public float horizontalStaminaSpeedBoost; //Represente un coefficient multiplicateur
     public float horizontalSpeed;
     public float verticalSpeed;
     public float verticalOscillationCoeff;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         else if (stamina.size < 1 && !Input.GetKey(KeyCode.Space))
             stamina.size += staminaRegenerationRate;
 
-        //Déplacement du joueur
+        //Deplacement du joueur
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * horizontalSpeed;
         var y = Input.GetAxis("Vertical") * Time.deltaTime * verticalSpeed;
 
@@ -67,10 +67,10 @@ public class PlayerController : MonoBehaviour {
         clampPos();
 
 
-        //Conditions de fin prématurée
+        //Conditions de fin prematuree
         if (oxygen.size == 0f)
         {
-            Score.RegisterLossOfPointsDive(60, "Il faut toujours faire attention à son niveau d'oxygène quand on plonge !");
+            Score.RegisterLossOfPointsDive(60, "Il faut toujours faire attention a son niveau d'oxygène quand on plonge !");
             endButton.SetActiveRecursively(true);
         }
 
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour {
           oxygen.size = Mathf.Clamp(oxygen.size - 15 * oxygenDecayRate,0,1);
             if(firstTimeTouchingJellyfish)
             {
-                Score.RegisterLossOfPointsDive(0, "Il faut éviter de toucher les méduses et les autres animaux, cela peut être dangereux !");
+                Score.RegisterLossOfPointsDive(0, "Il faut eviter de toucher les meduses et les autres animaux, cela peut être dangereux !");
                 firstTimeTouchingJellyfish = false;
             }
         }

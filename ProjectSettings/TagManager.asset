@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Harmful
   - SceneManager
+  - Instructor
   layers:
   - Default
   - TransparentFX

@@ -55,15 +55,15 @@ public class EquipmentManager : MonoBehaviour {
         DivingGear.onClick.AddListener(DivingGearOnClick);
     }
 
-    // Ordre dans lesquels les boutons doivent être actionnés pour gagner:
+    // Ordre dans lesquels les boutons doivent être actionnes pour gagner:
     //
-    // Gilet de plongée
-    // Détendeur
+    // Gilet de plongee
+    // Detendeur
     //
     // Combinaison
     // Poids
     //
-    // Après Poids + Détendeur:
+    // Après Poids + Detendeur:
     // Scaphandre
     // Palmes
     // Masque
@@ -85,7 +85,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            RemovePointsBecause("Détendeur équipé avant le gilet.");
+            RemovePointsBecause("Detendeur equipe avant le gilet.");
             Message.OpenMessageBoxWithMessage(Message.RegulatorError);
         }
     }
@@ -106,7 +106,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            RemovePointsBecause("Poids équipés avant la combinaison.");
+            RemovePointsBecause("Poids equipes avant la combinaison.");
             Message.OpenMessageBoxWithMessage(Message.WeightsError);
         }
     }
@@ -120,11 +120,11 @@ public class EquipmentManager : MonoBehaviour {
         }
         else {
             if (RegulatorOn) {
-                RemovePointsBecause("Scaphandre équipé avant la combinaison et les poids.");
+                RemovePointsBecause("Scaphandre equipe avant la combinaison et les poids.");
                 Message.OpenMessageBoxWithMessage(Message.DivingGearError);
             }
             else {
-                RemovePointsBecause("Scaphandre incomplet équipé.");
+                RemovePointsBecause("Scaphandre incomplet equipe.");
                 Message.OpenMessageBoxWithMessage(Message.DivingGearError2);
             }
         }
@@ -139,7 +139,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            RemovePointsBecause("Palmes équipées avant le scaphandre.");
+            RemovePointsBecause("Palmes equipees avant le scaphandre.");
             Message.OpenMessageBoxWithMessage(Message.FinsError);
         }
     }
@@ -153,7 +153,7 @@ public class EquipmentManager : MonoBehaviour {
             }
         }
         else {
-            RemovePointsBecause("Masque équipé avant le scaphandre");
+            RemovePointsBecause("Masque equipe avant le scaphandre");
             Message.OpenMessageBoxWithMessage(Message.MaskError);
         }
     }
